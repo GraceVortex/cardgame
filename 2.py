@@ -19,7 +19,7 @@ class TiltedRectangle:
 pygame.init()
 
 # Set up the display
-width, height = 1200, 800
+width, height = 1164, 823
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Tilted Rectangles")
 

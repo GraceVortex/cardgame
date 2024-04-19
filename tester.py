@@ -12,6 +12,9 @@ class TiltedRectangle:
         self.parameters = kwargs
 
     def draw(self):
+        # Draw the background image
+        self.screen.blit(self.screen_bg, (0, 0))
+        
         # Rotate and draw the main image
         rotated_image = pygame.transform.rotate(self.image, self.angle)
         rotated_rect = rotated_image.get_rect(center=self.rect.center)
@@ -33,13 +36,17 @@ class TiltedRectangle:
 
 # Initialize Pygame
 pygame.init()
-width, height = 1200, 800
+width, height = 1400, 1000
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Tilted Rectangles")
 
+# Load background image
+background_image = pygame.image.load("back.png")
+screen_bg = pygame.transform.scale(background_image, (width, height))
+
 # List of TiltedRectangles with an additional path for info images
 rectangles = [
-    TiltedRectangle(screen, "enfj.png", (300, 200, 200, 100), 45, "enfj_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "enfj.png", (46, 430, 200, 65), 270, "Group 1.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
     # Initialize other rectangles similarly with additional parameters
 ]
 
@@ -55,6 +62,7 @@ while running:
 
     screen.fill((255, 255, 255))  # Clear the screen
     for rectangle in rectangles:
+        rectangle.screen_bg = screen_bg  # Pass background image to the rectangle
         rectangle.draw()  # Draw all the rectangles
     pygame.display.flip()  # Update the display
 
