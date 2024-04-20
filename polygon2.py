@@ -7,80 +7,95 @@ class TiltedRectangle:
         self.image = pygame.image.load(image_path)
         self.info_image = pygame.image.load(info_image_path) if info_image_path else None
         self.pick_image = pygame.image.load(pick_image_path) if pick_image_path else None
-        self.rect = pygame.Rect(rect)  # Ensure rect is a pygame.Rect object
+        self.rect = pygame.Rect(rect)
         self.angle = angle
         self.is_info_visible = False
-        self.is_picked = False  # Флаг, показывающий, выбрана ли карта
-        # Сохраняем переданные параметры
+        self.is_picked = False
         self.parameters = kwargs
 
     def draw(self):
-        # Draw the background image
-        self.screen.blit(self.screen_bg, (0, 0))
-        
-        # Rotate and draw the main image
-        if self.is_picked and self.pick_image:
-            image_to_draw = self.pick_image
-        else:
-            image_to_draw = self.image
+        image_to_draw = self.pick_image if self.is_picked and self.pick_image else self.image
         rotated_image = pygame.transform.rotate(image_to_draw, self.angle)
         rotated_rect = rotated_image.get_rect(center=self.rect.center)
         self.screen.blit(rotated_image, rotated_rect)
-
-        # Optionally draw the info image centered on the screen
         if self.is_info_visible and self.info_image:
-            # Center the info image on the screen
             info_rect = self.info_image.get_rect(center=(self.screen.get_width() // 2, self.screen.get_height() // 2))
             self.screen.blit(self.info_image, info_rect)
 
     def check_click(self, mouse_pos):
-        # Check if the click is within the rectangle area
         if self.rect.collidepoint(mouse_pos):
-            # Fetch the state of mouse buttons
             left_click, _, right_click = pygame.mouse.get_pressed()
-            if left_click:  # Check if left mouse button is pressed
+            if left_click:
                 self.is_picked = not self.is_picked
-            elif right_click:  # Check if right mouse button is pressed
+            elif right_click:
                 self.is_info_visible = not self.is_info_visible
 
-# Initialize Pygame
+class Situation:
+    def __init__(self, screen, image_path, rect, angle, **kwargs):
+        self.screen = screen
+        self.image = pygame.image.load(image_path)
+        self.rect = pygame.Rect(rect)
+        self.angle = angle
+        self.parameters = kwargs
+
+    def draw(self):
+        rotated_image = pygame.transform.rotate(self.image, self.angle)
+        rotated_rect = rotated_image.get_rect(center=self.rect.center)
+        self.screen.blit(rotated_image, rotated_rect)
+
 pygame.init()
 width, height = 1400, 1000
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Tilted Rectangles")
-
-# Load background images
 background_image = pygame.image.load("back.png")
 backstart_image = pygame.image.load("backstart.png")
 screen_bg = pygame.transform.scale(background_image, (width, height))
 backstart_bg = pygame.transform.scale(backstart_image, (width, height))
 
-# List of TiltedRectangles with an additional path for info images
 rectangles = [
-    TiltedRectangle(screen, "enfj.png", (46, 430, 200, 65), 270, "enfj_info.png", pick_image_path="enfj_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "enfj.png", (46, 430, 200, 65), 270, "enfj_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "enfp.png", (100, 200, 200, 100), 90, "enfp_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=10, p=90),
+    TiltedRectangle(screen, "entj.png", (300, 200, 200, 100), 45, "entj_info.png", e=90, i=10, n=80, s=20, f=10, t=90, j=80, p=20),
+    TiltedRectangle(screen, "entp.png", (300, 200, 200, 100), 45, "entp_info.png", e=80, i=20, n=70, s=30, f=20, t=80, j=20, p=80),
+    TiltedRectangle(screen, "Esfj.png", (300, 200, 200, 100), 45, "esfj_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "esfp.png", (300, 200, 200, 100), 45, "esfp_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "estj.png", (300, 200, 200, 100), 45, "estj_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "estp.png", (300, 200, 200, 100), 45, "estp_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "infj.png", (300, 200, 200, 100), 45, "infj_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "infp.png", (300, 200, 200, 100), 45, "infp_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "intj.png", (300, 200, 200, 100), 45, "intj_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "intp.png", (300, 200, 200, 100), 45, "intp_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "isfj.png", (300, 200, 200, 100), 45, "isfj_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "isfp.png", (300, 200, 200, 100), 45, "isfp_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "ISTJ.png", (300, 200, 200, 100), 45, "istj_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "istp.png", (300, 200, 200, 100), 45, "istp_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
     # Initialize other rectangles similarly with additional parameters
 ]
 
-# Start button
+situations = [
+    Situation(screen, "situation1.png", (100, 100, 200, 200), 0, e=70, i=30, n=60, s=40, t=80, f=20, j=60, p=40),
+    Situation(screen, "situation2.png", (400, 100, 200, 200), 0, e=60, i=40, n=50, s=50, t=60, f=70, j=40, p=60)
+]
+
 start_button_rect = pygame.Rect(600, 500, 200, 100)
 start_button_color = (0, 0, 0)
 start_button_text = pygame.font.SysFont(None, 48).render("Start", True, (255, 255, 255))
-
-# Initial screen state
 current_screen = "start"
-
 running = True
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+        elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = pygame.mouse.get_pos()
-            if current_screen == "start":
-                if start_button_rect.collidepoint(mouse_pos):
-                    current_screen = "game"
+            if current_screen == "start" and start_button_rect.collidepoint(mouse_pos):
+                current_screen = "game"
+            elif current_screen == "game":
+                for rectangle in rectangles:
+                    rectangle.check_click(mouse_pos)  # Move this to mouse button down
 
-    screen.fill((255, 255, 255))  # Clear the screen
+    screen.fill((255, 255, 255))
     if current_screen == "start":
         screen.blit(backstart_bg, (0, 0))
         pygame.draw.rect(screen, start_button_color, start_button_rect)
@@ -88,11 +103,9 @@ while running:
     elif current_screen == "game":
         screen.blit(screen_bg, (0, 0))
         for rectangle in rectangles:
-            rectangle.screen_bg = screen_bg  # Pass background image to the rectangle
-            rectangle.draw()  # Draw all the rectangles
-            rectangle.check_click(pygame.mouse.get_pos())  # Check for click
+            rectangle.draw()
 
-    pygame.display.flip()  # Update the display
+    pygame.display.flip()
 
 pygame.quit()
 sys.exit()
