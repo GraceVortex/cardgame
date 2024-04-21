@@ -77,13 +77,7 @@ def get_situation_index(dice_image):
     return None
 
 pygame.init()
-<<<<<<< Updated upstream
-
-# Set up the display
-width, height = 1200, 800
-=======
 width, height = 1400, 1000
->>>>>>> Stashed changes
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Tilted Rectangles")
 
@@ -103,42 +97,22 @@ dice_rect = pygame.Rect(width // 2 - 40, height // 2 - 25, 80, 50)
 # Инициализация объектов TiltedRectangle и Situation
 situations = [Situation(screen, f'situation{i}.png', (700, 500, 200, 200), 0) for i in range(1, 7)]
 rectangles = [
-<<<<<<< Updated upstream
-    TiltedRectangle(screen, "enfj.png", pygame.Rect(300, 200, 200, 100), 45),
-    TiltedRectangle(screen, "enfp.png", pygame.Rect(300, 200, 200, 100), 45),
-    TiltedRectangle(screen, "entj.png", pygame.Rect(300, 200, 200, 100), 45),
-    TiltedRectangle(screen, "entp.png", pygame.Rect(300, 200, 200, 100), 45),
-    TiltedRectangle(screen, "Esfj.png", pygame.Rect(300, 200, 200, 100), 45),
-    TiltedRectangle(screen, "esfp.png", pygame.Rect(300, 200, 200, 100), 45),
-    TiltedRectangle(screen, "estj.png", pygame.Rect(300, 200, 200, 100), 45),
-    TiltedRectangle(screen, "estp.png", pygame.Rect(300, 200, 200, 100), 45),
-    TiltedRectangle(screen, "infj.png", pygame.Rect(300, 200, 200, 100), 45),
-    TiltedRectangle(screen, "infp.png", pygame.Rect(300, 200, 200, 100), 45),
-    TiltedRectangle(screen, "intj.png", pygame.Rect(300, 200, 200, 100), 45),
-    TiltedRectangle(screen, "intp.png", pygame.Rect(300, 200, 200, 100), 45),
-    TiltedRectangle(screen, "isfj.png", pygame.Rect(300, 200, 200, 100), 45),
-    TiltedRectangle(screen, "isfp.png", pygame.Rect(300, 200, 200, 100), 45),
-    TiltedRectangle(screen, "ISTJ.png", pygame.Rect(300, 200, 200, 100), 45),
-    TiltedRectangle(screen, "istp.png", pygame.Rect(300, 200, 200, 100), 45),
-    # Add more rectangles here if needed
-=======
     TiltedRectangle(screen, "enfj.png", (46, 430, 200, 65), 270, "enfj_info.png", "enfj_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
-    TiltedRectangle(screen, "enfp.png", (46, 560, 200, 65), 270, "enfp_info.png", "enfp_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
-    TiltedRectangle(screen, "entj.png", (535, 865, 200, 65), 0, "entj_info.png", "entj_pick.png",e=90, i=10, n=80, s=20, f=10, t=90, j=80, p=20),
-    TiltedRectangle(screen, "entp.png", (530, 80, 200, 65), 0, "entp_info.png", "entp_pick.png",e=80, i=20, n=70, s=30, f=20, t=80, j=20, p=80),
+    TiltedRectangle(screen, "enfp.png", (46, 560, 200, 65), 270, "enfp_info.png", "enfp_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=90, p=10),
+    TiltedRectangle(screen, "entj.png", (535, 865, 200, 65), 0, "entj_info.png", "entj_pick.png",e=90, i=10, n=80, s=20, f=90, t=10, j=80, p=20),
+    TiltedRectangle(screen, "entp.png", (530, 80, 200, 65), 0, "entp_info.png", "entp_pick.png",e=80, i=20, n=70, s=30, f=80, t=20, j=80, p=20),
     TiltedRectangle(screen, "Esfj.png", (1053, 725, 200, 65), 49, "esfj_info.png", "esfj_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
-    TiltedRectangle(screen, "esfp.png", (280, 805, 200, 65), 311, "esfp_info.png","esfp_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
-    TiltedRectangle(screen, "estj.png", (928, 805, 200, 65), 49, "estj_info.png","estj_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
-    TiltedRectangle(screen, "estp.png", (928, 115, 200, 65), 130, "estp_info.png","estp_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
-    TiltedRectangle(screen, "infj.png", (1150, 560, 200, 65), 90, "infj_info.png","infj_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
-    TiltedRectangle(screen, "infp.png", (1150, 430, 200, 65), 90, "infp_info.png", "infp_pick.png",e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
-    TiltedRectangle(screen, "intj.png", (665, 80, 200, 65), 0, "intj_info.png","intj_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
-    TiltedRectangle(screen, "intp.png", (695, 865, 200, 65), 0, "intp_info.png","intp_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
-    TiltedRectangle(screen, "isfj.png", (280, 115, 200, 65), 228, "isfj_info.png","isfj_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
-    TiltedRectangle(screen, "isfp.png", (1045, 205, 200, 65), 130, "isfp_info.png","isfp_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
-    TiltedRectangle(screen, "ISTJ.png", (155, 195, 200, 65), 228, "istj_info.png", "istj_pick.png",e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
-    TiltedRectangle(screen, "istp.png", (155, 725, 200, 65), 311, "istp_info.png", "istp_pick.png",e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
->>>>>>> Stashed changes
+    TiltedRectangle(screen, "esfp.png", (280, 805, 200, 65), 311, "esfp_info.png","esfp_pick.png", e=80, i=20, n=70, s=30, f=90, t=10, j=80, p=20),
+    TiltedRectangle(screen, "estj.png", (928, 805, 200, 65), 49, "estj_info.png","estj_pick.png", e=80, i=20, n=70, s=30, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "estp.png", (928, 115, 200, 65), 130, "estp_info.png","estp_pick.png", e=70, i=30, n=60, s=40, f=80, t=20, j=70, p=30),
+    TiltedRectangle(screen, "infj.png", (1150, 560, 200, 65), 90, "infj_info.png","infj_pick.png", e=20, i=80, n=70, s=30, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "infp.png", (1150, 430, 200, 65), 90, "infp_info.png", "infp_pick.png",e=30, i=70, n=70, s=30, f=90, t=10, j=10, p=90),
+    TiltedRectangle(screen, "intj.png", (665, 80, 200, 65), 0, "intj_info.png","intj_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=80, p=20),
+    TiltedRectangle(screen, "intp.png", (695, 865, 200, 65), 0, "intp_info.png","intp_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=80, p=20),
+    TiltedRectangle(screen, "isfj.png", (280, 115, 200, 65), 228, "isfj_info.png","isfj_pick.png", e=60, i=40, n=70, s=30, f=20, t=80, j=60, p=40),
+    TiltedRectangle(screen, "isfp.png", (1045, 205, 200, 65), 130, "isfp_info.png","isfp_pick.png", e=60, i=40, n=70, s=30, f=80, t=20, j=80, p=20),
+    TiltedRectangle(screen, "ISTJ.png", (155, 195, 200, 65), 228, "istj_info.png", "istj_pick.png",e=70, i=30, n=60, s=40, f=20, t=80, j=70, p=30),
+    TiltedRectangle(screen, "istp.png", (155, 725, 200, 65), 311, "istp_info.png", "istp_pick.png",e=30, i=70, n=40, s=60, f=20, t=80, j=20, p=80),
 ]
 
 situations = [
@@ -173,10 +147,31 @@ def reset_picked_cards(cards):
             card.image = pygame.image.load(card.image_path)  # Assuming original image path is stored in image_path attribute
 
 def calculate_total_error(average_params, situation_params):
+    param_keys = ['e', 'i', 'n', 's', 't', 'f', 'j', 'p']
+    max_error_per_param = 10000  # (100-0)^2
+    max_total_error = max_error_per_param * len(param_keys)  # Максимальная общая ошибка
     total_error = 0
-    for param in ['e', 'i', 'n', 's', 't', 'f', 'j', 'p']:
+    for param in param_keys:
         total_error += (average_params[param] - situation_params[param]) ** 2
-    return total_error
+    
+    precision = 100 * (1 - total_error / max_total_error)
+    return max(0, min(100, precision))  # Убедимся, что значение находится в пределах от 0 до 100%
+
+def draw_final_info_panel(screen, situation_params, total_error_1, total_error_2):
+    font = pygame.font.SysFont(None, 36)
+    # Создание фонового прямоугольника для панели
+    panel_rect = pygame.Rect(screen.get_width() // 2 - 150, screen.get_height() // 2 + 150, 300, 230)
+    pygame.draw.rect(screen, (0, 0, 255), panel_rect)  # Фон панели синего цвета
+
+    # Текстовые метки для параметров и ошибок
+    labels = ['E', 'A', 'M', 'T', 'J', 'F', 'Precision 1', 'Precision 2']
+    values = [situation_params.get(param.lower(), 0) for param in ['E', 'A', 'M', 'T', 'J', 'F']]
+    values.extend([f"{total_error_1:.2f}%", f"{total_error_2:.2f}%"])
+
+    # Вывод текста параметров и значений
+    for i, (label, value) in enumerate(zip(labels, values)):
+        text = font.render(f"{label}: {value}", True, (255, 255, 255))  # Текст белого цвета
+        screen.blit(text, (panel_rect.x + 10, panel_rect.y + 10 + i * 25))
 
 while running:
     for event in pygame.event.get():
@@ -243,8 +238,8 @@ while running:
             else:
                 end_image = pygame.image.load('end2.png')
             screen.blit(end_image, (width // 2 - end_image.get_width() // 2, height // 2 - end_image.get_height() // 2))
-            pygame.display.flip()
-            pygame.time.wait(5000)  # Показать результат на 5 секунд
+            draw_final_info_panel(screen, situations[situation_index].parameters, total_error_1, total_error_2)
+    
     pygame.display.flip()
 
 pygame.quit()
