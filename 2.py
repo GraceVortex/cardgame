@@ -80,10 +80,14 @@ pygame.init()
 <<<<<<< Updated upstream
 
 # Set up the display
+<<<<<<< HEAD
 width, height = 1200, 800
 =======
 width, height = 1400, 1000
 >>>>>>> Stashed changes
+=======
+width, height = 1164, 823
+>>>>>>> feature
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Tilted Rectangles")
 
@@ -103,6 +107,7 @@ dice_rect = pygame.Rect(width // 2 - 40, height // 2 - 25, 80, 50)
 # Инициализация объектов TiltedRectangle и Situation
 situations = [Situation(screen, f'situation{i}.png', (700, 500, 200, 200), 0) for i in range(1, 7)]
 rectangles = [
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     TiltedRectangle(screen, "enfj.png", pygame.Rect(300, 200, 200, 100), 45),
     TiltedRectangle(screen, "enfp.png", pygame.Rect(300, 200, 200, 100), 45),
@@ -120,6 +125,24 @@ rectangles = [
     TiltedRectangle(screen, "isfp.png", pygame.Rect(300, 200, 200, 100), 45),
     TiltedRectangle(screen, "ISTJ.png", pygame.Rect(300, 200, 200, 100), 45),
     TiltedRectangle(screen, "istp.png", pygame.Rect(300, 200, 200, 100), 45),
+=======
+    TiltedRectangle(screen, "enfj.png", (300, 200, 200, 100), 45, "enfj_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "enfp.png", (300, 200, 200, 100), 45, "enfp_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=10, p=90),
+    TiltedRectangle(screen, "entj.png", (300, 200, 200, 100), 45, "entj_info.png", e=90, i=10, n=80, s=20, f=10, t=90, j=80, p=20),
+    TiltedRectangle(screen, "entp.png", (300, 200, 200, 100), 45, "entp_info.png", e=80, i=20, n=70, s=30, f=20, t=80, j=20, p=80),
+    TiltedRectangle(screen, "Esfj.png", (300, 200, 200, 100), 45, "Esfj_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "esfp.png", (300, 200, 200, 100), 45, "esfp_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "estj.png", (300, 200, 200, 100), 45, "estj_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "estp.png", (300, 200, 200, 100), 45, "estp_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "infj.png", (300, 200, 200, 100), 45, "infj_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "infp.png", (300, 200, 200, 100), 45, "infp_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "intj.png", (300, 200, 200, 100), 45, "intj_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "intp.png", (300, 200, 200, 100), 45, "intp_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "isfj.png", (300, 200, 200, 100), 45, "isfj_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "isfp.png", (300, 200, 200, 100), 45, "isfp_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "ISTJ.png", (300, 200, 200, 100), 45, "ISTJ_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+    TiltedRectangle(screen, "istp.png", (300, 200, 200, 100), 45, "istp_info.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
+>>>>>>> feature
     # Add more rectangles here if needed
 =======
     TiltedRectangle(screen, "enfj.png", (46, 430, 200, 65), 270, "enfj_info.png", "enfj_pick.png", e=90, i=10, n=80, s=20, f=90, t=10, j=60, p=40),
